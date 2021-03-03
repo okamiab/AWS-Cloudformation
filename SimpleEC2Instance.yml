@@ -1,0 +1,21 @@
+---
+# Create a simple EC2 instance in your prefered AZ within the default VPC. Create a Security Group and reference it within the resource.
+Resources:
+  MyInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      AvailabilityZone: us-west-1a
+      ImageId: ami-0bdb828fd58c52235
+      InstanceType: t2.micro
+      SecurityGroups:
+        - !Ref InstanceSecurityGroup
+  InstanceSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow SSH traffic.
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: '22'
+          ToPort: '22'
+          # Subnet range that can ssh to this instance.
+          CidrIp: '10.0.0.0/24'
