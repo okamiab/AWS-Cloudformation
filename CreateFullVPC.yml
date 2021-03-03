@@ -96,7 +96,7 @@ Resources:
     Properties:
       RouteTableId: !Ref PrivateRouteTable
       SubnetId: !Ref PrivateSubnet
-#Define parameters that can be used within the resources.
+#Define parameters that can be used within the resources..
 Parameters:
   SuperCidr:
     Description: Main SuperSubnet
