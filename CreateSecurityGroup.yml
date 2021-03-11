@@ -1,0 +1,21 @@
+Resources:
+  # Create a Security Group within a Specific VPC, or if you remove the Ref it will create the SG within the default VPC.
+  NewSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: NEW SG to allow http traffic.
+      VpcId: vpc-xxxxxxxxxxxxxx
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 10.0.0.0/24
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 10.0.0.0/24
+Outputs:
+  SGOutput:
+    Description: Newly created SG.
+    Value: NewSecurityGroup
+
